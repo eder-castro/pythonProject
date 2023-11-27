@@ -1,3 +1,5 @@
+import random
+
 print("***********************")
 print("*                     *")
 print("* Jogo de adivinhação *")
