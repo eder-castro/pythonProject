@@ -8,8 +8,8 @@ def jogar():
     palavra_secreta = "abacaxi"
     acertou = False
     enforcado = False
-    letras_certas = ["_",'_',"_","_","_","_","_"]
-    
+    letras_certas = ["_" for letras in palavra_secreta]
+    chances = palavra_secreta.len()
     print(letras_certas)
   
     while (not acertou and not enforcado):
