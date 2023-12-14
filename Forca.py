@@ -1,31 +1,67 @@
+import random
+
+
 def jogar():
-    print("*****************************************")
-    print("*                                       *")
-    print("*             Jogo da Forca             *")
-    print("*                                       *")
-    print("*****************************************","\n")
+  print("\n")
+  print("*****************************************")
+  print("*                                       *")
+  print("*             Jogo da Forca             *")
+  print("*                                       *")
+  print("*****************************************", "\n")
 
-    palavra_secreta = "abacaxi"
-    acertou = False
-    enforcado = False
-    letras_certas = ["_" for letras in palavra_secreta]
-    chances = palavra_secreta.len()
-    print(letras_certas)
-  
-    while (not acertou and not enforcado):
-        chute = input("Qual a letra ? ")
-        chute = chute.strip()
-        index = 0
-        for letra in palavra_secreta:
-            if (chute.upper() == letra.upper()):
-                print("Encontrei a letra {} na posição {}".format(chute, index))
-                letras_certas[index] = letra
-            index = index + 1
+  arquivo = open("frutas.txt", "r")
+  lista_de_palavras = []
 
-        print(letras_certas)
+  for linha in arquivo:
+    linha = linha.strip()
+    lista_de_palavras.append(linha)
+  arquivo.close()
 
-    print("Jogando Forca")
-    print("Jogo finalizado")
+  posicao_aleatoria = random.randrange(0, len(lista_de_palavras))
+
+  palavra_secreta = lista_de_palavras[posicao_aleatoria].upper()
+
+  acertou = False
+  enforcado = False
+
+  letras_certas = ["_" for letra in palavra_secreta]
+
+  chances = len(palavra_secreta)
+
+  print(letras_certas)
+  print("Voce tem {} chances".format(chances))
+
+  while (not acertou and not enforcado):
+    chute = input("Qual a letra ? ")
+    chute = chute.strip().upper()
+
+    if (chute in palavra_secreta):
+      index = 0
+      for letra in palavra_secreta:
+        if (chute == letra):
+          letras_certas[index] = letra
+          print("Encontrei a letra {} na posição {}".format(chute, index))
+        index += 1
+      print(letras_certas)
+      chances -= 1
+      if chances != 0:
+        print("Voce tem {} chances".format(chances))
+    else:
+      chances -= 1
+      print("Nao encontrei a letra {} na palavra secreta".format(chute))
+      print(letras_certas)
+      if chances != 0:
+        print("Voce tem {} chances".format(chances))
+
+    enforcado = chances == 0
+    acertou = "_" not in letras_certas
+  if (chances == 0 and "_" in letras_certas):
+    print("Voce perdeu :(")
+    print("A palavra era {}".format(palavra_secreta))
+  else:
+    print("Parabens, voce ganhou :)")
+  print("Jogo finalizado")
+
 
 if (__name__ == "__main__"):
-    jogar()
+  jogar()
