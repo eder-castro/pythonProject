@@ -1,13 +1,10 @@
 import random
-
+import msg_entrada
+import resultado
 
 def jogar():
-  print("\n")
-  print("*****************************************")
-  print("*                                       *")
-  print("*             Jogo da Forca             *")
-  print("*                                       *")
-  print("*****************************************", "\n")
+  titulo = "*             Jogo da Forca             *"
+  msg_entrada.mensagem_entrada(titulo)
 
   arquivo = open("frutas.txt", "r")
   lista_de_palavras = []
@@ -55,11 +52,7 @@ def jogar():
 
     enforcado = chances == 0
     acertou = "_" not in letras_certas
-  if (chances == 0 and "_" in letras_certas):
-    print("Voce perdeu :(")
-    print("A palavra era {}".format(palavra_secreta))
-  else:
-    print("Parabens, voce ganhou :)")
+    resultado.mostrar()
   print("Jogo finalizado")
 
 

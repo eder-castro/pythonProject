@@ -1,13 +1,10 @@
 import random
-
+import msg_entrada
+import resultado
 
 def jogar():
-  print("\n")
-  print("*****************************************")
-  print("*                                       *")
-  print("*          Jogo de adivinhação          *")
-  print("*                                       *")
-  print("*****************************************", "\n")
+  titulo = "*          Jogo de adivinhação          *"
+  msg_entrada.mensagem_entrada(titulo)
 
   print("1 - FÁCIL - 10 chances")
   print("2 - MÉDIO - 06 chances")
@@ -37,22 +34,7 @@ def jogar():
     if (chute > 30 or chute < 1):
       print("ATENÇÃO!!! Seu palpite deve estar entre 1 e 30")
     else:
-      if (chute == numero_secreto):
-        print("Você acertou e fez {} pontos!".format(pontos))
-        break
-      else:
-        if (chute > numero_secreto):
-          print("Seu chute foi maior!")
-          if (rodada == chances):
-            print(
-                "O número secreto era {}. Você faria {} pontos se tivesse acertado"
-                .format(numero_secreto, pontos))
-        elif (chute < numero_secreto):
-          print("Seu chute foi menor!")
-          if (rodada == chances):
-            print(
-                "O número secreto era {}. Você faria {} pontos se tivesse acertado"
-                .format(numero_secreto, pontos))
+      resultado.mostrar(chute, numero_secreto, pontos, rodada, chances)
       rodada = rodada + 1
       pontos = pontos - abs(numero_secreto - chute)
 

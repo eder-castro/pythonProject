@@ -1,14 +1,14 @@
 import Adivinhacao
 import Forca
+import msg_entrada
 
-print("*****************************************")
-print("*                                       *")
-print("*           Escolha um jogo             *")
-print("*                                       *")
-print("*****************************************", "\n")
+
+titulo = "*           Seleção de Jogos             *"
+msg_entrada.mensagem_entrada(titulo)
 
 print("1 - Forca")
-print("2 - Adivinhacao")
+print("2 - Adivinhacao","\n")
+
 
 jogo = int(input("Escolha um jogo: "))
 
