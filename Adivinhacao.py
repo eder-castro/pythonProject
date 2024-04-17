@@ -1,6 +1,8 @@
 import random
+
 import msg_entrada
 import resultado
+
 
 def jogar():
   titulo = "*          Jogo de adivinhação          *"
@@ -34,11 +36,9 @@ def jogar():
     if (chute > 30 or chute < 1):
       print("ATENÇÃO!!! Seu palpite deve estar entre 1 e 30")
     else:
-      resultado.mostrar(chute, numero_secreto, pontos, rodada, chances)
+      resultado.mostrar_adiv(chute, numero_secreto, pontos, rodada, chances)
       rodada = rodada + 1
       pontos = pontos - abs(numero_secreto - chute)
-
-  print("Jogo finalizado")
 
 
 if (__name__ == "__main__"):

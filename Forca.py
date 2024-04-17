@@ -2,6 +2,7 @@ import random
 import msg_entrada
 import resultado
 
+
 def jogar():
   titulo = "*             Jogo da Forca             *"
   msg_entrada.mensagem_entrada(titulo)
@@ -50,10 +51,10 @@ def jogar():
       if chances != 0:
         print("Voce tem {} chances".format(chances))
 
-    enforcado = chances == 0
+    enforcado = chances == 0 and "_" in letras_certas
     acertou = "_" not in letras_certas
-    resultado.mostrar()
-  print("Jogo finalizado")
+    resultado.mostrar_forca(chances, letras_certas, palavra_secreta, enforcado,
+                            acertou)
 
 
 if (__name__ == "__main__"):
